@@ -25,7 +25,7 @@ pipeline {
                               "files": [
                                  {
                                   "pattern": "/tmp/zip/c_1.2.0.zip",
-                                  "target": "binary-storage/",
+                                  "target": "binary-storage/"
                                  // "recursive": "false"
                                 } 
                              ]
