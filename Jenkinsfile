@@ -20,7 +20,7 @@ pipeline {
 		stage ('Publish') {
 			steps {
                 rtUpload (
-					serverId: 'jfrog-docker',
+					serverId: 'jfrog1',
 					specPath: '/tmp/zip/d_1.2.0.zip'
 				)
             }
