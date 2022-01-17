@@ -13,7 +13,7 @@ pipeline {
         }
 		stage ('Build') {
 			steps {
-                sh 'sudo python3 /tmp/zip_job.py'
+                sh 'python3 /tmp/zip_job.py'
             }
 		}
 		stage ('Show Log File') {
