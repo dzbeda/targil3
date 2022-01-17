@@ -60,7 +60,7 @@ else:
 ## Create folder if are not exists
 
 #Path(file_path).mkdir(parents=True, exist_ok=True)
-#Path(zip_file_path).mkdir(parents=True, exist_ok=True)
+Path(zip_file_path).mkdir(parents=True, exist_ok=True)
 #os.chmod(zip_file_path, 0o777)
 
 ## Generate files
