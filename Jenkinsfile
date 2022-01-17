@@ -24,9 +24,9 @@ pipeline {
 					spec: '''{
                               "files": [
                                  {
-                                  "pattern": "/tmp/zip/*.zip",
+                                  "pattern": "/tmp/zip/c_1.2.0.zip",
                                   "target": "binary-storage/",
-                                  "recursive": "false"
+                                 // "recursive": "false"
                                 } 
                              ]
                         }'''
