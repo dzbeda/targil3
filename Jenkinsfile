@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerfile {
-            args '--privileged -v $WORKSPACE/zip:/zip'
+            args '--privileged -v $WORKSPACE/zip:/zip -u root' 
             }
     }
     stages {
