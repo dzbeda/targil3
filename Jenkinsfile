@@ -21,15 +21,15 @@ pipeline {
 			steps {
                 rtUpload (
 					serverId: 'jfrog1',
-					spec: ''' {
-					  "files": [
-						  {
-						   "pattern": "/tmp/zip/*.zip",
-						   "target" : "binary-storage/",
-						  }
-					  ]
-					
-					}'''
+					spec: '''{
+                              "files": [
+                                 {
+                                  "pattern": "/tmp/zip/*.zip",
+                                  "target": "binary-storage/",
+                                  "recursive": "false"
+                                } 
+                             ]
+                        }'''
 				)
             }
 		}
