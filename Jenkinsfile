@@ -17,5 +17,13 @@ pipeline {
                 sh 'cat /tmp/output.log'
             }
 		}
+		stage ('Publish') {
+			steps {
+                rtUpload (
+					serverId: 'jfrog-docker',
+					specPath: '/tmp/zip/'
+				)
+            }
+		}
     }
 }
