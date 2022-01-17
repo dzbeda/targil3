@@ -5,7 +5,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     vim \
-    python3-pip
+    python3-pip \
+    curl 
+RUN pip3 install Path \
 COPY zip_job.py /tmp
 COPY get_info.sh /tmp
 RUN chmod 777 /tmp/get_info.sh
