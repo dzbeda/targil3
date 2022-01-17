@@ -22,13 +22,14 @@ pipeline {
                 rtUpload (
 					serverId: 'jfrog1',
 					spec: ''' {
-					"files": [
-						{
-						 "pattern": "/tmp/zip/*.zip",
-						 "target" : "binary-storage/",
-						}
-					]
-					}
+					  "files": [
+						  {
+						   "pattern": "/tmp/zip/*.zip",
+						   "target" : "binary-storage/",
+						  }
+					  ]
+					
+					}'''
 				)
             }
 		}
