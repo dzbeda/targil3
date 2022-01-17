@@ -12,5 +12,10 @@ pipeline {
                 sh 'python3 /tmp/zip_job.py'
             }
 		}
+		stage ('Show Log File') {
+			steps {
+                sh 'cat /tmp/output.log'
+            }
+		}
     }
 }
