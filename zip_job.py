@@ -41,7 +41,7 @@ logging.basicConfig(filename=logFile,filemode='w',format='%(asctime)s - %(leveln
 files = {'a','b','c','d'}
 file_extension= '.txt'
 file_path='/tmp/'  #define the path were txt files will be created
-zip_file_path= '/tmp/zip/'   #define the path were zip files will be created
+zip_file_path= '/tmp/'   #define the path were zip files will be created
 version=os.getenv('VERSION')
 
 
@@ -61,7 +61,7 @@ else:
 
 Path(file_path).mkdir(parents=True, exist_ok=True)
 Path(zip_file_path).mkdir(parents=True, exist_ok=True)
-os.chmod(zip_file_path, 0o777)
+#os.chmod(zip_file_path, 0o777)
 
 ## Generate files
 
