@@ -1,5 +1,9 @@
 pipeline {
-    agent {dockerfile true}
+    agent {
+        dockerfile {
+            args '--privileged -v /zip:/zip'
+            }
+    }
     stages {
         stage ('first') {
             steps {
@@ -9,7 +13,7 @@ pipeline {
         }
 		stage ('Build') {
 			steps {
-                sh 'python3 /tmp/zip_job.py'
+                sh 'sudo python3 /tmp/zip_job.py'
             }
 		}
 		stage ('Show Log File') {
