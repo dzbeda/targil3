@@ -21,7 +21,14 @@ pipeline {
 			steps {
                 rtUpload (
 					serverId: 'jfrog1',
-					specPath: '/tmp/zip/d_1.2.0.zip'
+					spec: ''' {
+					"files": [
+						{
+						 "pattern": "/tmp/zip/*.zip",
+						 "target" : "binary-storage/",
+						}
+					]
+					}
 				)
             }
 		}
