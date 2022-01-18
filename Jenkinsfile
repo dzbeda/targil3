@@ -2,8 +2,6 @@ pipeline {
     agent {
         dockerfile {
             args '--privileged -v $WORKSPACE/zip:/zip -u root' 
-	    label "zip-job-docker"
-	    reuseNode true
             }
     }
     stages {
