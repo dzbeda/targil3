@@ -1,41 +1,54 @@
 pipeline {
     agent {
         dockerfile {
-            args '--privileged -v $WORKSPACE/zip:/zip -u root' 
-            }
+              args '--privileged -v $WORKSPACE/zip:/zip -u root'
+              reuseNode true
+        }
     }
     stages {
-        stage ('first') {
+        stage ('Agent information') {
             steps {
-                sh 'python3 --version'
                 sh '/tmp/get_info.sh'
-            }	
+            }
         }
-		stage ('Build') {
-			steps {
+		    stage ('Build') {
+			      steps {
                 sh 'python3 /tmp/zip_job.py'
             }
-		}
-		stage ('Show Log File') {
-			steps {
+		    }
+		    stage ('Show Log') {
+			      steps {
                 sh 'cat /tmp/output.log'
             }
-		}
-		stage ('Publish') {
-			steps {
-				sh 'printenv'
-                rtUpload (
-					serverId: 'jfrog1',
-					spec: '''{
-                              "files": [
-                                 {
-                                  "pattern": "$WORKSPACE/zip/*.zip",
-                                  "target": "binary-storage/"
-                                } 
-                             ]
-                        }'''
-				)
+		    }
+		    stage ('Publish') {
+          // environment {
+          //      FOLDER= sh(returnStdout: true,script: 'echo $VERSION')
+          // }
+			      steps {
+                    rtUpload (
+    					             serverId: 'jfrog1',
+    					             spec: '''{
+                                  "files": [
+                                     {
+                                      "pattern": "$WORKSPACE/zip/*.zip",
+                                      "target":  "binary-storage/"
+                                    }
+                                 ]
+                            }'''
+    				         )
             }
-		}
+		     }
+    }
+    post {
+         success {
+           emailext(attachLog: true, body: 'Pleae find attached log', subject: 'Job passed successfully', to: 'dudu.confirm@gmail.com;dudu.zbeda@gmail.com')
+         }
+         failure  {
+           emailext(attachLog: true, body: 'Pleae find attached log', subject: 'Job failed to run', to: 'dudu.confirm@gmail.com;dudu.zbeda@gmail.com')
+         }
+         always {
+            cleanWs()
+        }
     }
 }
